@@ -12,15 +12,17 @@ mydb = mysql.connector.connect(
     password= "password"
 )
 
-if (mydb.is_connected() ==  True ):
 
-    print("Database 'alx_book_store' created successfully!")
+try:
+    mydb.connect()
+
     curssor = mydb.cursor()
 
     curssor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
 
-    curssor.execute(sql_query)
+    curssor.execute(sql_query) 
 
-else : 
+    print("Database 'alx_book_store' created successfully!")
 
-    print("cannot connect to database")
+except  mysql.connector.Error  as e  :
+    print(e)
