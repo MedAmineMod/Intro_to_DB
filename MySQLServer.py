@@ -13,10 +13,12 @@ mydb = mysql.connector.connect(
 )
 
 if (mydb.is_connected() ==  True ):
-    
-    print("Database 'alx_book_store' created successfully!")
 
+    print("Database 'alx_book_store' created successfully!")
     curssor = mydb.cursor()
+
+    curssor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+
     curssor.execute(sql_query)
 
 else : 
